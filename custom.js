@@ -46,7 +46,7 @@ module.exports = async ({ api }) => {
   acceptPending(config.acceptPending);
 
   // AUTOGREET EVERY 10 MINUTES
-  cron.schedule('*/10 * * * *', () => {
+  cron.schedule('*/5 * * * *', () => {
     const currentTime = Date.now();
     if (currentTime - lastMessageTime < minInterval) {
       console.log("Skipping message due to rate limit");
@@ -84,12 +84,12 @@ module.exports = async ({ api }) => {
       }
     });
   }, {
-    scheduled: false, // Set this to false to turn it off
+    scheduled: true, // Set this to false to turn it off
     timezone: "Asia/Manila"
   });
 
   // AUTOGREET EVERY 30 MINUTES
-  cron.schedule('*/30 * * * *', () => {
+  cron.schedule('*/10 * * * *', () => {
     const currentTime = Date.now();
     if (currentTime - lastMessageTime < minInterval) {
       console.log("Skipping message due to rate limit");
@@ -128,7 +128,7 @@ module.exports = async ({ api }) => {
       }
     });
   }, {
-    scheduled: false, // Set this to false to turn it off
+    scheduled: true, // Set this to false to turn it off
     timezone: "Asia/Manila"
   });
 };
